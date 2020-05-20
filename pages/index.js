@@ -21,12 +21,14 @@ function Home({ posts }) {
       </main>
 
       <div className="max-w-7xl mx-auto py-12 sm:px-6 lg:px-8">
-        {posts.map(post => (
-          <article className="p-4 shadow rounded bg-white mb-5">
-              <h1 className="text-purple-500 leading-normal">{post.title.rendered}</h1>
-              <div className="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">{ ReactHtmlParser(post.content.rendered) }</div>
-          </article>
-          ))}
+        {          
+          posts.map(post => (
+            <article key={post.id} className="p-4 shadow rounded bg-white mb-5">
+                <h1 className="text-purple-500 leading-normal">{post.title.rendered}</h1>
+                <div className="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">{ ReactHtmlParser(post.content.rendered) }</div>
+            </article>
+          ))
+        }
       </div>
 
       <footer>
@@ -36,14 +38,11 @@ function Home({ posts }) {
   )
 }
 
-export async function getStaticProps() {
-  const res = await fetch('https://www.allendale-inc.com/wp-json/wp/v2/product');
-  const posts = await res.json();
-  return {
-    props: {
-      posts,
-    },
-  }
+
+Home.getInitialProps = async ctx => {
+  const res = await fetch('https://www.allendale-inc.com/wp-json/wp/v2/product')
+  const json = await res.json()
+  return { posts: json }
 }
 
 export default Home
