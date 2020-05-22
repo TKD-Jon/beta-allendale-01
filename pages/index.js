@@ -19,16 +19,38 @@ function Home({ props }) {
         <title>Allendale Beta PWA</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="max-w-7xl mx-auto py-12 grid grid-cols-3 gap-8">
+      <div className="
+        max-w-7xl 
+        mx-auto 
+        py-12
+        px-8
+        md:px-0 
+        grid 
+          grid-cols-1 
+          md:grid-cols-3
+          gap-8
+        ">
         {      
           props.posts.map(post => (
             <article 
               key={post.id} 
               onClick={() => changeLink(post.link)}
-              className="cursor-pointer max-w-sm rounded overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:scale-95 hover:opacity-75"
+              className="
+                max-w-sm
+                cursor-pointer 
+                rounded 
+                overflow-hidden 
+                shadow-lg 
+                transition 
+                  duration-500 
+                  ease-in-out 
+                  transform 
+                hover:scale-95 
+                hover:opacity-75
+              "
             >
                 <img className="w-full" src={post.acf.featured_image.link} alt="Sunset in the mountains" />
-                <div class="px-6 py-4">
+                <div className="px-6 py-4">
                     <h1 className="font-bold text-xl mb-2">
                       {ReactHtmlParser(post.title.rendered)}
                     </h1>
