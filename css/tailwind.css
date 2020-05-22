@@ -1,9 +1,27 @@
+/* Init Tailwind */
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-body {
-    @apply bg-blue-500 p-12;
+/* TypeKit */
+@import url("https://use.typekit.net/osp2tqx.css");
+
+:root {
+    /* Font Family */
+    --font-proxima:"proxima-nova",sans-serif;
+    --font-helv:Helvetica,Arial,sans-serif;
+
+    /* Colors */
+    --color-primary:#3a5828;
+    --color-secondary:#f04e23;
+    --color-border:rgba(179,179,179,.5);
+
+
+    /* Tranistion Speeds */
+}
+
+* {
+    font-family: var(--font-proxima);
 }
 p {
     padding: 0.5em 0;

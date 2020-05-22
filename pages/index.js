@@ -8,41 +8,57 @@ import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from
 import Layout from '../components/Layout'
 
 
-function Home({ posts }) {
+function Home({ props }) {
+  function changeLink(link) {
+    console.log(link)
+    location.href = link
+  }
   return (
-    <Layout>
+    <Layout header={props.global_options}>
       <Head>
         <title>Allendale Beta PWA</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main>
-        <h1>Main</h1>
-      </main>
-
-      <div className="max-w-7xl mx-auto py-12 sm:px-6 lg:px-8">
-        {          
-          posts.map(post => (
-            <article key={post.id} className="p-4 shadow rounded bg-white mb-5">
-                <h1 className="text-purple-500 leading-normal">{post.title.rendered}</h1>
-                <div className="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">{ ReactHtmlParser(post.content.rendered) }</div>
+      <div className="max-w-7xl mx-auto py-12 grid grid-cols-3 gap-8">
+        {      
+          props.posts.map(post => (
+            <article 
+              key={post.id} 
+              onClick={() => changeLink(post.link)}
+              className="cursor-pointer max-w-sm rounded overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:scale-95 hover:opacity-75"
+            >
+                <img className="w-full" src={post.acf.featured_image.link} alt="Sunset in the mountains" />
+                <div class="px-6 py-4">
+                    <h1 className="font-bold text-xl mb-2">
+                      {ReactHtmlParser(post.title.rendered)}
+                    </h1>
+                    <div className="text-gray-700 text-base">
+                      { ReactHtmlParser(post.post_excerpt) }
+                    </div>
+                </div>
             </article>
           ))
         }
       </div>
-
-      <footer>
-        <h1>Footer</h1>
-      </footer>
     </Layout>
   )
 }
 
+Home.getInitialProps = async (ctx) => {
+  const home_page_data = await fetch('https://dev.allendale-inc.com/wp-json/wp/v2/mwuc')
+  const posts_json = await home_page_data.json()
 
-Home.getInitialProps = async ctx => {
-  const res = await fetch('https://www.allendale-inc.com/wp-json/wp/v2/product')
-  const json = await res.json()
-  return { posts: json }
+  const global_options = await fetch('https://dev.allendale-inc.com/wp-json/acf/v3/options/acf-options')
+  const GO_json = await global_options.json()
+  
+  const test = "testing"
+  
+  return {
+    props: {
+      posts: posts_json,
+      global_options: GO_json
+    }
+  }
 }
 
 export default Home

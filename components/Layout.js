@@ -1,12 +1,16 @@
-function Layout({ children }) {
-    return <div className="main-layout-container">
-        {children}
-        <style jsx global>{`
-            .main-layout-container {
-                background:red;
-            }
-        `}</style>
-    </div>
+import Header from '../components/Header'
+
+function Layout({ children, header }) {
+    return (
+        <div>
+            <Header global_options={header.acf} />
+            <div className="container mx-auto">
+                <main>
+                    {children}
+                </main>
+            </div>
+        </div>
+    )
   }
   
-  export default Layout
+export default Layout
