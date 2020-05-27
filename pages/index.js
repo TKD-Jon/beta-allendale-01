@@ -49,7 +49,7 @@ function Home({ props }) {
                 hover:opacity-75
               "
             >
-                <img className="w-full" src={post.acf.featured_image.link} alt="Sunset in the mountains" />
+                <img className="w-full" src={post.acf.featured_image.url} alt="Sunset in the mountains" />
                 <div className="px-6 py-4">
                     <h1 className="font-bold text-xl mb-2">
                       {ReactHtmlParser(post.title.rendered)}
