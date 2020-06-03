@@ -16,33 +16,14 @@ function Header({ global_options }) {
             <link rel='apple-touch-icon' href='/apple-icon.png'></link>
             <meta name='theme-color' content='#3a5828' />
             </Head>
-            {console.dir(global_options)}
-            <div className="
-                container 
-                mx-auto 
-                py-4 
-                px-8
-                md:px-0
-                md:flex 
-                items-end
-            ">
-                <div className="
-                    md:flex 
-                    md:w-1/4
-                ">
+            <div className="container mx-auto py-4 px-8 md:px-0 md:flex items-end">
+                <div className="md:flex md:w-1/4">
                     <div className="md:flex-shrink-0">
                         <img className="md:w-56" src={global_options.logo} />
                     </div>
                 </div>
                 <div className="md:w-3/4">
-                    <h1 className="
-                        hidden
-                        md:block
-                        m-0 
-                        text-xl 
-                        font-bold 
-                        leading-none
-                    ">
+                    <h1 className="md:block hidden m-0 text-xl font-bold leading-none">
                         {global_options.site_title}
                     </h1>
                 </div>
