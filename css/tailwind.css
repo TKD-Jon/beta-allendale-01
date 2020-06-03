@@ -24,7 +24,7 @@
     font-family: var(--font-proxima);
 }
 body {
-    margin:0 !important;
+    margin:0;
 }
 p {
     padding: 0.5em 0;
