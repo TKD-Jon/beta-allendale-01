@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.allendale_pwa.twa",
+    "sha256_cert_fingerprints": [
+      "29:E4:39:FC:FA:ED:4D:49:7F:5E:49:C7:5B:6D:1B:5C:93:FC:EF:FA:10:B5:F8:C0:E2:BD:EA:37:5C:2A:57:89"
+    ]
+  }
+}]
