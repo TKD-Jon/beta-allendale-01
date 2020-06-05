@@ -27,7 +27,7 @@ Home.getInitialProps = async (ctx) => {
   const user_json = await user_call.json()
 
   
-  
+  console.dir(GO_json)
   
   return {
     props: {
